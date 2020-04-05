@@ -1,3 +1,5 @@
+//2d array, questionsArr[i][0] holds the question, followed by the answers
+
 var questionsArr =[
 	["Lupasit ostaa kaverillesi joululahjan. Voisit kuitenkin ostaa myös ostaa itsellesi uuden TV:n. Rahat riittävät vain toiseen, mitä teet?", 
 	"Ostat kaverille joululahjan, sillä pyrit olemaan epäitsekäs", "Kaveri ei kuitenkaan käytä joululahjaa, joten ei ole väliä ostaako sen vai ei.", "Ostat lahjan, sillä lupausta ei tule pettää", "Vaikka lupasitkin joululahjan, koet että saat itse päättää ostatko sittenkin TV:n", "Olit jo kaverin kanssa sopinut ostavasi joululahjan joten myös ostat sen"],
@@ -15,6 +17,8 @@ var questionsArr =[
 
 var qIndex;
 
+//Consider alternative approach to keeping track of score than unnecessarily many vars. perhaps an array?
+
 var pointsHyve = 0;
 var pointsSeuraus = 0;
 var pointsVelvollisuus = 0;
@@ -23,11 +27,13 @@ var pointsSopimus = 0;
 var selectedTime = 0;
 
 
-function optionPressed(btnId){
-	var valittu = btnId.substring(0, (btnId.length -3));
-	//window.alert(valittu);
+//MANAGES ANSWERING TO QUESTIONS
 
-	switch (valittu){
+function optionPressed(btnId){
+
+	var chosenEthicName = btnId.substring(0, (btnId.length - 3));
+
+	switch (chosenEthicName){
 		case "hyve":
 			pointsHyve++; 
 			break;
@@ -53,19 +59,14 @@ function optionPressed(btnId){
 	newQuestion();
 }
 
+
+//SHOWS SCORE
+
 function checkScore(){
 	settings.style.display = "none";
 	game.style.display = "none";
 	results.style.display = "block";
-	/*
-	window.alert(
-		"Hyve-etiikka: " + pointsHyve
-		+ "\nSeuraus-etiikka: " + pointsSeuraus
-		+ "\nVelvollisuus-etiikka: " + pointsVelvollisuus
-		+ "\nOikeus-etiikka: " + pointsOikeus
-		+ "\nSopimus-etiikka: " + pointsSopimus
-	);
-	*/
+
 
 	hyveResult.innerText = "Hyve-etiikka: " + pointsHyve;
 	seurausResult.innerText = "Seurausetiikka: " + pointsSeuraus;
@@ -73,39 +74,47 @@ function checkScore(){
 	oikeusResult.innerText = "Oikeusetiikka: " + pointsOikeus;
 	sopimusResult.innerText = "Sopimus-etiikka: " + pointsSopimus;
 
-	var vahvinEtiikka = Math.max(pointsHyve, pointsSeuraus, pointsVelvollisuus, pointsOikeus, pointsSopimus);
 
-	var vahvinEtiikkaNimi;
+	var strongestEthic = Math.max(pointsHyve, pointsSeuraus, pointsVelvollisuus, pointsOikeus, pointsSopimus);
 
-	switch(vahvinEtiikka){
+	var strongestEthicName;
+
+	switch(strongestEthic){
 
 		case pointsHyve: 
-			vahvinEtiikkaNimi = "hyve";
+			strongestEthicName = "hyve";
 			break;
 
 		case pointsSeuraus: 
-			vahvinEtiikkaNimi = "seuraus";
+			strongestEthicName = "seuraus";
 			break;
 
 		case pointsVelvollisuus: 
-			vahvinEtiikkaNimi = "velvollisuus";
+			strongestEthicName = "velvollisuus";
 			break;
 
 		case pointsOikeus: 
-			vahvinEtiikkaNimi = "oikeus";
+			strongestEthicName = "oikeus";
 			break;
 
 		case pointsSopimus: 
-			vahvinEtiikkaNimi = "sopimus";
+			strongestEthicName = "sopimus";
 			break;
 	}
 
-	vahvinEtiikkaH2.innerText = "Vastasit " + Math.round(100*(vahvinEtiikka / questionsArr.length)) + "% " + vahvinEtiikkaNimi + "-etiikan mukaan.";
+	//When multiple ethics share a score, chooses one of them without further explanations, should be noted
+	//Code also presumes that all questions are answered as the percentage is calculated with the length of questionsArr, FIX!
+
+	strongestEthicH2.innerText = "Vastasit " + Math.round(100*(strongestEthic / questionsArr.length)) + "% " + strongestEthicName + "-etiikan mukaan.";
 
 }
+
+
 var timer1;
 var timeSet;
 var time;
+
+//HANDLES GENERATING NEW QUESTIONS AS WELL AS RESETTING TIMER
 
 function newQuestion(){
 	if(qIndex > questionsArr.length-2){
@@ -131,9 +140,11 @@ function newQuestion(){
 
 
 	time = timeSet;
-	timeIndic.innerText = time;
+	timeIndicator.innerText = time;
 	timer1 = setInterval(timer, 1000);
 }
+
+//HANDLES STARTING GAME
 
 function startGame(){
 	settings.style.display = "none";
@@ -151,16 +162,22 @@ function generateGame(){
 }
 
 
+
+//MANAGES TIMER, WHEN TIME RUNS OUT, NONE OF THE ETHICS RECEIVE POINTS AND NEW QUESTION IS INSTANTIAITED
+
+
 function timer(){
 	time--;
-	timeIndic.innerText = time;
+	timeIndicator.innerText = time;
 	if(time <= 0){
 		clearInterval(timer1);
-		pointsVelvollisuus++;
+		//pointsVelvollisuus++;
 		newQuestion();
 	}
 
 }
+
+
 
 function shuffleQuestions(){
 	var ul = document.getElementById("questionBtns");

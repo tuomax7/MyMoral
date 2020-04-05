@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>MyMoral – Peli</title>
+	<meta charset="UTF-8" lang="fi">
+	<title>MyMoral</title>
 
 	<link rel="stylesheet" type="text/css" href="myMoral.css">
 	<script src="myMoral.js"></script>
@@ -12,12 +12,16 @@
 <body>
 	<h1>MyMoral</h1>
 
+
+	<!-- Settings (so far a drop-down to choose max time per question) -->
+
 	<div id="settings" style="display: block;">
 		<p>Alta voit säätää asetukset ja sitten aloittaa pelin.</p>
 
 		<div>
 			<h3>Asetukset</h3>
 			<p>Kysymyskohtainen aikaraja vastaamiseen</p>
+
 			<select id="timeSelect">
     			<option value="noTime">Ei aikarajaa</option>
     			<option value="60">60 s</option>
@@ -26,14 +30,18 @@
   			</select>
 
   			<p>(Mikäli aikaraja ylittyy ja kysymys jää vastaamatta, jää kysymyksen vastaus tyhjäksi eikä sitä oteta huomioon lopputuloksessa)</p>
+
   			<button onClick="startGame()">Aloita peli!</button>
 		</div>
 	</div>
 
 	
 
+	<!-- Gameview, time indicator, questions and buttons to manage gameplay -->
+
 	<div id="game" style="display: none">
-		<h2 id="timeIndic">Time</h2>
+
+		<h2 id="timeIndicator">Time</h2>
 
 		<h2 id="questionBox"></h2>
 
@@ -46,13 +54,20 @@
 		</ul>
 
 		</br></br>
+
 		<button onClick="checkScore()">Katso tulos</button>
+
 		</br>
+
 		<button onClick="newQuestion()">Uusi kysymys!</button>
 	</div>
 
+
+	<!-- Resultview, displays data regarding how the player has answered. -->
+
 	<div id="results" style="display: none">
 		<h2>Tulokset</h2>
+
 		<p>Vastasit kysymyksiin seuraavasti: </p>
 		<ul>
 			<li id="hyveResult">Hyve-etiikka</li>
@@ -62,10 +77,8 @@
 			<li id="sopimusResult">Sopimusetiikka</li>
 		</ul>
 
-		<h2 id="vahvinEtiikkaH2">Vastasit 30% etiikan mukaan</h2>
+		<h2 id="strongestEthicH2"></h2>
 	</div>
-
-	
 
 
 </body>
