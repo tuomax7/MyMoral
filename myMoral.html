@@ -1,12 +1,72 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8" lang="fi">
-	<title>MyMoral</title>
-</head>
-<body>
+	<meta charset="UTF-8">
+	<title>MyMoral – Peli</title>
 
+	<link rel="stylesheet" type="text/css" href="myMoral.css">
+	<script src="myMoral.js"></script>
+
+</head>
+
+<body>
 	<h1>MyMoral</h1>
+
+	<div id="settings" style="display: block;">
+		<p>Alta voit säätää asetukset ja sitten aloittaa pelin.</p>
+
+		<div>
+			<h3>Asetukset</h3>
+			<p>Kysymyskohtainen aikaraja vastaamiseen</p>
+			<select id="timeSelect">
+    			<option value="noTime">Ei aikarajaa</option>
+    			<option value="60">60 s</option>
+    			<option value="30">30 s</option>
+    			<option value="10">10 s</option>
+  			</select>
+
+  			<p>(Mikäli aikaraja ylittyy ja kysymys jää vastaamatta, jää kysymyksen vastaus tyhjäksi eikä sitä oteta huomioon lopputuloksessa)</p>
+  			<button onClick="startGame()">Aloita peli!</button>
+		</div>
+	</div>
+
+	
+
+	<div id="game" style="display: none">
+		<h2 id="timeIndic">Time</h2>
+
+		<h2 id="questionBox"></h2>
+
+		<ul id="questionBtns">
+			<li><button id="hyveBtn" onClick="optionPressed(id)">Hyve</button></li>
+			<li><button id="seurausBtn" onClick="optionPressed(id)">Seuraus</button></li>
+			<li><button id="velvollisuusBtn" onClick="optionPressed(id)">Velvollisuus</button></li>
+			<li><button id="oikeusBtn" onClick="optionPressed(id)">Oikeus</button></li>
+			<li><button id="sopimusBtn" onClick="optionPressed(id)">Sopimus</button></li>
+		</ul>
+
+		</br></br>
+		<button onClick="checkScore()">Katso tulos</button>
+		</br>
+		<button onClick="newQuestion()">Uusi kysymys!</button>
+	</div>
+
+	<div id="results" style="display: none">
+		<h2>Tulokset</h2>
+		<p>Vastasit kysymyksiin seuraavasti: </p>
+		<ul>
+			<li id="hyveResult">Hyve-etiikka</li>
+			<li id="seurausResult">Seurausetiikka</li>
+			<li id="velvollisuusResult">Velvollisuusetiikka</li>
+			<li id="oikeusResult">Oikeusetiikka</li>
+			<li id="sopimusResult">Sopimusetiikka</li>
+		</ul>
+
+		<h2 id="vahvinEtiikkaH2">Vastasit 30% etiikan mukaan</h2>
+	</div>
+
+	
+
 
 </body>
 </html>

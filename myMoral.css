@@ -1,0 +1,15 @@
+body{
+	background-color: #F3DBD9;
+	font-family: serif;
+	
+}
+
+
+button{
+	font-size: 20px;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+}
