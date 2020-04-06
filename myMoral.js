@@ -17,7 +17,7 @@ var questionsArr =[
 
 var qIndex;
 
-var ethicScores ={"hyve" : 0, "seuraus" : 0, "velvollisuus" : 0, "oikeus" : 0, "sopimus" : 0};
+var ethicScores = {"hyve" : 0, "seuraus" : 0, "velvollisuus" : 0, "oikeus" : 0, "sopimus" : 0};
 
 
 //MANAGES ANSWERING TO QUESTIONS
@@ -154,7 +154,6 @@ function timer(){
 	timeIndicator.innerText = time;
 	if(time <= 0){
 		clearInterval(timer1);
-		//pointsVelvollisuus++;
 		newQuestion();
 	}
 
@@ -169,7 +168,6 @@ function shuffleQuestions(){
     	ul.appendChild(ul.children[Math.random() * i | 0]);
 	}
 }
-
 
 
 //REFRESHES PAGE FOR A NEW GAME
