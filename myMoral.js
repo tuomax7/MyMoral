@@ -2,7 +2,7 @@
 
 var questionsArr =[
 	["Lupasit ostaa kaverillesi joululahjan. Voisit kuitenkin ostaa myös ostaa itsellesi uuden TV:n. Rahat riittävät vain toiseen, mitä teet?", 
-	"Ostat kaverille joululahjan, sillä pyrit olemaan epäitsekäs", "Kaveri ei kuitenkaan käytä joululahjaa, joten ei ole väliä ostaako sen vai ei.", "Ostat lahjan, sillä lupausta ei tule pettää", "Vaikka lupasitkin joululahjan, koet että saat itse päättää ostatko sittenkin TV:n", "Olit jo kaverin kanssa sopinut ostavasi joululahjan joten myös ostat sen"],
+	"Ostat kaverille joululahjan, sillä pyrit olemaan epäitsekäs.", "Kaveri ei kuitenkaan käytä joululahjaa, joten ei ole väliä ostaako sen vai ei.", "Ostat lahjan, sillä lupausta ei tule pettää.", "Vaikka lupasitkin joululahjan, koet että saat itse päättää ostatko sittenkin TV:n.", "Olit jo kaverin kanssa sopinut ostavasi joululahjan joten myös ostat sen."],
 	["Moi",
 	"hyve1", "seuraus1", "velvollisuus1", "oikeus1", "sopimus1"],
 	["Moi2", 
