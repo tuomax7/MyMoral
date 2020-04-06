@@ -56,9 +56,12 @@ function checkScore(){
 
 	}
 
-	//If the player has not answered any questions
+	//If the player has not answered any questions, a pop-up message appears and the page is refreshed
 
 	if(totalAnswered == 0){
+
+		window.alert("Et vastannut yhteenkään kysymykseen, ladataan sivu uudestaan uutta yritystä varten.");
+		location.reload();
 
 		return;
 	}
