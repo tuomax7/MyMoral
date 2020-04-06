@@ -3,7 +3,7 @@
 var questionsArr =[
 	["Lupasit ostaa kaverillesi joululahjan. Voisit kuitenkin ostaa myös ostaa itsellesi uuden TV:n. Rahat riittävät vain toiseen, mitä teet?", 
 	"Ostat kaverille joululahjan, sillä pyrit olemaan epäitsekäs", "Kaveri ei kuitenkaan käytä joululahjaa, joten ei ole väliä ostaako sen vai ei.", "Ostat lahjan, sillä lupausta ei tule pettää", "Vaikka lupasitkin joululahjan, koet että saat itse päättää ostatko sittenkin TV:n", "Olit jo kaverin kanssa sopinut ostavasi joululahjan joten myös ostat sen"],
-	["Moi", 
+	["Moi",
 	"hyve1", "seuraus1", "velvollisuus1", "oikeus1", "sopimus1"],
 	["Moi2", 
 	"hyve2", "seuraus2", "velvollisuus2", "oikeus2", "sopimus2"],
@@ -19,12 +19,8 @@ var qIndex;
 
 //Consider alternative approach to keeping track of score than unnecessarily many vars. perhaps an array?
 
-var pointsHyve = 0;
-var pointsSeuraus = 0;
-var pointsVelvollisuus = 0;
-var pointsOikeus = 0;
-var pointsSopimus = 0;
-var selectedTime = 0;
+
+var ethicScores ={"hyve" : 0, "seuraus" : 0, "velvollisuus" : 0, "oikeus" : 0, "sopimus" : 0};
 
 
 //MANAGES ANSWERING TO QUESTIONS
@@ -33,28 +29,8 @@ function optionPressed(btnId){
 
 	var chosenEthicName = btnId.substring(0, (btnId.length - 3));
 
-	switch (chosenEthicName){
-		case "hyve":
-			pointsHyve++; 
-			break;
+	ethicScores[chosenEthicName]++;
 
-		case "seuraus":
-			pointsSeuraus++; 
-			break;
-
-		case "velvollisuus":
-			pointsVelvollisuus++; 
-			break;
-
-		case "oikeus":
-			pointsOikeus++; 
-			break;
-
-		case "sopimus":
-			pointsSopimus++;
-			break; 
-
-	}
 	clearInterval(timer1);
 	newQuestion();
 }
@@ -63,49 +39,46 @@ function optionPressed(btnId){
 //SHOWS SCORE
 
 function checkScore(){
+
+
+	var strongestEthic = -1;
+	var strongestEthicName;
+	var totalAnswered = 0;
+
+	for (var ethicName in ethicScores){
+		totalAnswered += ethicScores[ethicName];
+
+		if(ethicScores[ethicName] > strongestEthic){
+
+			strongestEthic = ethicScores[ethicName];
+			strongestEthicName = ethicName;
+		}
+
+	}
+
+	//If the player has not answered any questions
+
+	if(totalAnswered == 0){
+
+		return;
+	}
+
+
 	settings.style.display = "none";
 	game.style.display = "none";
 	results.style.display = "block";
 
 
-	hyveResult.innerText = "Hyve-etiikka: " + pointsHyve;
-	seurausResult.innerText = "Seurausetiikka: " + pointsSeuraus;
-	velvollisuusResult.innerText = "Velvollisuusetiikka: " + pointsVelvollisuus;
-	oikeusResult.innerText = "Oikeusetiikka: " + pointsOikeus;
-	sopimusResult.innerText = "Sopimus-etiikka: " + pointsSopimus;
+	hyveResult.innerText = "Hyve-etiikka: " + ethicScores["hyve"];
+	seurausResult.innerText = "Seurausetiikka: " + ethicScores["seuraus"];
+	velvollisuusResult.innerText = "Velvollisuusetiikka: " + ethicScores["velvollisuus"];
+	oikeusResult.innerText = "Oikeusetiikka: " + ethicScores["oikeus"];
+	sopimusResult.innerText = "Sopimus-etiikka: " + ethicScores["sopimus"];
 
-
-	var strongestEthic = Math.max(pointsHyve, pointsSeuraus, pointsVelvollisuus, pointsOikeus, pointsSopimus);
-
-	var strongestEthicName;
-
-	switch(strongestEthic){
-
-		case pointsHyve: 
-			strongestEthicName = "hyve";
-			break;
-
-		case pointsSeuraus: 
-			strongestEthicName = "seuraus";
-			break;
-
-		case pointsVelvollisuus: 
-			strongestEthicName = "velvollisuus";
-			break;
-
-		case pointsOikeus: 
-			strongestEthicName = "oikeus";
-			break;
-
-		case pointsSopimus: 
-			strongestEthicName = "sopimus";
-			break;
-	}
 
 	//When multiple ethics share a score, chooses one of them without further explanations, should be noted
-	//Code also presumes that all questions are answered as the percentage is calculated with the length of questionsArr, FIX!
 
-	strongestEthicH2.innerText = "Vastasit " + Math.round(100*(strongestEthic / questionsArr.length)) + "% " + strongestEthicName + "-etiikan mukaan.";
+	strongestEthicH2.innerText = "Vastasit " + Math.round(100*(strongestEthic / totalAnswered)) + "% " + strongestEthicName + "-etiikan mukaan.";
 
 }
 
@@ -185,9 +158,6 @@ function shuffleQuestions(){
     	ul.appendChild(ul.children[Math.random() * i | 0]);
 	}
 }
-
-
-
 
 
 
