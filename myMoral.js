@@ -17,9 +17,6 @@ var questionsArr =[
 
 var qIndex;
 
-//Consider alternative approach to keeping track of score than unnecessarily many vars. perhaps an array?
-
-
 var ethicScores ={"hyve" : 0, "seuraus" : 0, "velvollisuus" : 0, "oikeus" : 0, "sopimus" : 0};
 
 
@@ -89,7 +86,6 @@ function checkScore(){
 
 	strongestEthicH2.innerText = strongestEthicLabel;
 
-
 }
 
 
@@ -121,6 +117,11 @@ function newQuestion(){
     	ul.appendChild(ul.children[Math.random() * i | 0]);
 	}
 
+
+	if(timeSet == "noTime"){
+		timeIndicator.style.display = "none";
+		return;
+	}
 
 	time = timeSet;
 	timeIndicator.innerText = time;
@@ -167,6 +168,15 @@ function shuffleQuestions(){
 	for (var i = ul.children.length; i >= 0; i--) {
     	ul.appendChild(ul.children[Math.random() * i | 0]);
 	}
+}
+
+
+
+//REFRESHES PAGE FOR A NEW GAME
+
+function reloadGame(){
+	location.reload();
+
 }
 
 
