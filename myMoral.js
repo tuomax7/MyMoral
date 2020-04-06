@@ -81,7 +81,14 @@ function checkScore(){
 
 	//When multiple ethics share a score, chooses one of them without further explanations, should be noted
 
-	strongestEthicH2.innerText = "Vastasit " + Math.round(100*(strongestEthic / totalAnswered)) + "% " + strongestEthicName + "-etiikan mukaan.";
+	var strongestEthicLabel = "Vastasit " + Math.round(100*(strongestEthic / totalAnswered)) + "% " + strongestEthicName;
+
+	if(strongestEthicName == "hyve") strongestEthicLabel += "-";
+
+	strongestEthicLabel += "etiikan mukaan.";
+
+	strongestEthicH2.innerText = strongestEthicLabel;
+
 
 }
 
