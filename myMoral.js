@@ -15,6 +15,8 @@ var questionsArr =[
 	"hyve5", "seuraus5", "velvollisuus5", "oikeus5", "sopimus5"]
 ];
 
+var ethicSummaries = {"hyve" : "Hyve", "seuraus" : "Seuraus", "velvollisuus" : "Velvollisuus", "oikeus" : "Oikeus", "sopimus" : "Sopimus"};
+
 var qIndex;
 
 var ethicScores = {"hyve" : 0, "seuraus" : 0, "velvollisuus" : 0, "oikeus" : 0, "sopimus" : 0};
@@ -85,6 +87,10 @@ function checkScore(){
 	strongestEthicLabel += "etiikan mukaan.";
 
 	strongestEthicH2.innerText = strongestEthicLabel;
+
+	var ethicSummary = document.createElement('p');
+	ethicSummary.innerText = ethicSummaries[strongestEthicName];
+	document.getElementById('ethicSummary').appendChild(ethicSummary);
 
 }
 
