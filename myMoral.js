@@ -119,6 +119,8 @@ function newQuestion(){
 
 	var ul = document.getElementById("questionBtns");
 
+	//Shuffles question order
+
 	for (var i = ul.children.length; i >= 0; i--) {
     	ul.appendChild(ul.children[Math.random() * i | 0]);
 	}
@@ -147,6 +149,7 @@ function startGame(){
 
 function generateGame(){
 	qIndex = -1;
+	shuffleQuestions();
 	newQuestion();
 
 }
@@ -166,16 +169,6 @@ function timer(){
 }
 
 
-
-function shuffleQuestions(){
-	var ul = document.getElementById("questionBtns");
-
-	for (var i = ul.children.length; i >= 0; i--) {
-    	ul.appendChild(ul.children[Math.random() * i | 0]);
-	}
-}
-
-
 //REFRESHES PAGE FOR A NEW GAME
 
 function reloadGame(){
@@ -183,6 +176,20 @@ function reloadGame(){
 
 }
 
+//SHUFFLES QUESTION ARRAY
+
+function shuffleQuestions() {
+    var newIndex, placeholder, currentIndex;
+
+    for (currentIndex = questionsArr.length - 1; currentIndex > 0; currentIndex--) {
+
+        newIndex = Math.floor(Math.random() * (currentIndex + 1));
+
+        placeholder = questionsArr[currentIndex];
+        questionsArr[currentIndex] = questionsArr[newIndex];
+        questionsArr[newIndex] = placeholder;
+    }
+}
 
 
 
