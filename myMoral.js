@@ -15,7 +15,7 @@ var questionsArr =[
 	"hyve5", "seuraus5", "velvollisuus5", "oikeus5", "sopimus5"]
 ];
 
-var ethicSummaries = {"hyve" : "Hyve", "seuraus" : "Seuraus", "velvollisuus" : "Velvollisuus", "oikeus" : "Oikeus", "sopimus" : "Sopimus"};
+var ethicSummaries = {"hyve" : "Hyvetiivistelmä", "seuraus" : "Seuraustiivistelmä", "velvollisuus" : "Velvollisuustiivistelmä", "oikeus" : "Oikeustiivistelmä", "sopimus" : "Sopimustiivistelmä"};
 
 var qIndex;
 
@@ -119,7 +119,7 @@ function newQuestion(){
 
 	var ul = document.getElementById("questionBtns");
 
-	//Shuffles question order
+	//Shuffles answer order
 
 	for (var i = ul.children.length; i >= 0; i--) {
     	ul.appendChild(ul.children[Math.random() * i | 0]);
