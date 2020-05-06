@@ -102,6 +102,12 @@ var time;
 //HANDLES GENERATING NEW QUESTIONS AS WELL AS RESETTING TIMER
 
 function newQuestion(){
+
+	document.getElementById("progressBar").innerText = Math.round(100*((qIndex+1)/questionsArr.length)) + "%";
+
+
+
+
 	if(qIndex > questionsArr.length-2){
 		checkScore();
 		return;

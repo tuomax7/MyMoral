@@ -12,6 +12,11 @@ ul {
 	padding: 0;
 }
 
+#progressBarDiv{
+	width: 100%;
+	background-color: #e0d7de;
+}
+
 #progressBar{
 	width: 10%;
 	height: 30px;
