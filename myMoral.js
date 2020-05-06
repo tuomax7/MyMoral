@@ -148,8 +148,10 @@ function newQuestion(){
 //HANDLES STARTING GAME
 
 function startGame(){
-	settings.style.display = "none";
-	game.style.display = "block";
+	document.getElementById("settings").style.display = "none";
+	document.getElementById("game").style.display = "block";
+	document.getElementById("progress").style.display = "block";
+
 	var selector = document.getElementById("timeSelect");
 	timeSet = selector[selector.selectedIndex].value;
 	generateGame();
