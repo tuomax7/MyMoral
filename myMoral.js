@@ -103,6 +103,9 @@ var time;
 
 function newQuestion(){
 
+	//Clears the timer of the previous question
+	clearInterval(timer1);
+
 	//progressPercent is handled questions / all questions
 	var progressPercent = Math.round(100*((qIndex+1)/questionsArr.length)) + "%";
 
@@ -133,6 +136,14 @@ function newQuestion(){
 	for (var i = ul.children.length; i >= 0; i--) {
     	ul.appendChild(ul.children[Math.random() * i | 0]);
 	}
+
+	//Hides next question button when arriving at the last question
+	if(qIndex >= questionsArr.length-1){
+		document.getElementById("nextQuestionBtn").style.display = "none";
+	}
+
+
+	//Sets timer
 
 
 	if(timeSet == "noTime"){
@@ -172,11 +183,7 @@ function generateGame(){
 function timer(){
 	time--;
 	timeIndicator.innerText = time;
-	if(time <= 0){
-		clearInterval(timer1);
-		newQuestion();
-	}
-
+	if(time <= 0) newQuestion();
 }
 
 
