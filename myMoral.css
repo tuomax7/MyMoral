@@ -11,3 +11,12 @@ ul {
 	list-style-type: none;
 	padding: 0;
 }
+
+#progressBar{
+	width: 10%;
+	height: 30px;
+	background-color: #2BD97C;
+	text-align: center;
+  	line-height: 30px;
+  	color: white; 
+}
