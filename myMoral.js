@@ -103,8 +103,11 @@ var time;
 
 function newQuestion(){
 
-	document.getElementById("progressBar").innerText = Math.round(100*((qIndex+1)/questionsArr.length)) + "%";
+	//progressPercent is handled questions / all questions
+	var progressPercent = Math.round(100*((qIndex+1)/questionsArr.length)) + "%";
 
+	document.getElementById("progressBar").innerText = progressPercent;
+	document.getElementById("progressBar").style.width = progressPercent;
 
 
 
