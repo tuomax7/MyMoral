@@ -210,4 +210,20 @@ function shuffleQuestions() {
 }
 
 
+//Updates global results shown at the end of the quiz
+
+function updateResults(strongestEthicName) {
+
+	//first we read the points of the strongest ethic
+
+  firebase.database().ref('results/points' + strongestEthicName).set({
+    /*hyve*/: /*hyve +1*/
+
+    //then we increment it by one
+
+  });
+
+}
+
+
 
