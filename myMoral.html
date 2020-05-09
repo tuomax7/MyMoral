@@ -5,6 +5,38 @@
 	<title>MyMoral</title>
 
 	<link rel="stylesheet" type="text/css" href="myMoral.css">
+
+	<!-- Google Firebase setup -->
+
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+
+	<script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script>
+
+	<script>
+  		// Your web app's Firebase configuration
+  		var firebaseConfig = {
+    		apiKey: "AIzaSyA42MF6rvNmFmrOvnzGT1c3mUYqTOUlxwU",
+    		authDomain: "mymoral-5876d.firebaseapp.com",
+    		databaseURL: "https://mymoral-5876d.firebaseio.com",
+    		projectId: "mymoral-5876d",
+    		storageBucket: "mymoral-5876d.appspot.com",
+    		messagingSenderId: "697403493833",
+    		appId: "1:697403493833:web:18dd152f83881962472c18",
+    		measurementId: "G-BTWW64TK96"
+  		};
+
+  		// Initialize Firebase
+  		firebase.initializeApp(firebaseConfig);
+  		firebase.analytics();
+  		firebase.database();
+	</script>
+
 	<script src="myMoral.js"></script>
 
 </head>
@@ -97,36 +129,6 @@
 
 		<button onClick="reloadGame()">Uusi peli</button>
 	</div>
-
-	
-
-
-	<!-- Google Firebase setup -->
-
-
-	<!-- The core Firebase JS SDK is always required and must be listed first -->
-	<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
-
-	<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-	<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script>
-
-	<script>
-  	// Your web app's Firebase configuration
-  	var firebaseConfig = {
-    	apiKey: "AIzaSyA42MF6rvNmFmrOvnzGT1c3mUYqTOUlxwU",
-    	authDomain: "mymoral-5876d.firebaseapp.com",
-    	databaseURL: "https://mymoral-5876d.firebaseio.com",
-    	projectId: "mymoral-5876d",
-    	storageBucket: "mymoral-5876d.appspot.com",
-    	messagingSenderId: "697403493833",
-    	appId: "1:697403493833:web:18dd152f83881962472c18",
-    	measurementId: "G-BTWW64TK96"
-  	};
-  	// Initialize Firebase
-  	firebase.initializeApp(firebaseConfig);
-  	firebase.analytics();
-</script>
 
 
 </body>

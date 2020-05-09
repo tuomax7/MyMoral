@@ -35,6 +35,7 @@ function optionPressed(btnId){
 }
 
 
+
 //SHOWS SCORE
 
 function checkScore(){
@@ -64,6 +65,8 @@ function checkScore(){
 
 		return;
 	}
+
+	updateResults(strongestEthicName);
 
 
 	settings.style.display = "none";
@@ -214,14 +217,50 @@ function shuffleQuestions() {
 
 function updateResults(strongestEthicName) {
 
-	//first we read the points of the strongest ethic
 
-  firebase.database().ref('results/points' + strongestEthicName).set({
-    /*hyve*/: /*hyve +1*/
+	//Holds the global count of every gotten ethic result
 
-    //then we increment it by one
+	var ethicCounts = {"hyve" : 0, "seuraus" : 0, "velvollisuus" : 0, "oikeus" : 0, "sopimus" : 0};
 
-  });
+
+	//Reads and updates the firebase realtime database
+
+	firebase.database().ref('results/points/hyve').once('value', function(snapshot){
+		ethicCounts['hyve'] = snapshot.val();
+
+		firebase.database().ref('results/points/seuraus').once('value', function(snapshot){
+			ethicCounts['seuraus'] = snapshot.val();
+
+			firebase.database().ref('results/points/velvollisuus').once('value', function(snapshot){
+				ethicCounts['velvollisuus'] = snapshot.val();
+
+				firebase.database().ref('results/points/oikeus').once('value', function(snapshot){
+					ethicCounts['oikeus'] = snapshot.val();
+
+					firebase.database().ref('results/points/sopimus').once('value', function(snapshot){
+						ethicCounts['sopimus'] = snapshot.val();
+
+
+						//This players gotten ethic count is incremented
+						ethicCounts[strongestEthicName]++;
+
+						//Updates database
+
+						firebase.database().ref('results/points').set({
+							hyve : ethicCounts['hyve'],
+							seuraus : ethicCounts['seuraus'],
+							velvollisuus : ethicCounts['velvollisuus'],
+							oikeus : ethicCounts['oikeus'],
+							sopimus : ethicCounts['sopimus']
+						});
+
+					});
+				});
+			});
+		});
+
+	});
+
 
 }
 
