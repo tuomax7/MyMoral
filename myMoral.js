@@ -254,6 +254,26 @@ function updateResults(strongestEthicName) {
 							sopimus : ethicCounts['sopimus']
 						});
 
+
+
+						//Updates ethic percentages of global results for the player's resultview
+
+						var totalEthicCount = 0;
+
+						for(var ethicName in ethicCounts){
+							totalEthicCount += ethicCounts[ethicName];
+						}
+
+						for(var ethicName in ethicCounts){
+							document.getElementById(ethicName + 'Percent').innerText += (' ' + (100 * ethicCounts[ethicName] / totalEthicCount).toFixed(1) + '%');
+
+							if(ethicName == strongestEthicName) document.getElementById(ethicName + 'Percent').style.fontWeight = 'bold';
+
+						}
+
+						//Updates strongest ethic percentage label
+						document.getElementById('strongestEthicGlobalPrecentLabel').innerText += (' ' + (100 * ethicCounts[strongestEthicName] / totalEthicCount).toFixed(1) + '% kyselyyn vastanneista.');
+
 					});
 				});
 			});

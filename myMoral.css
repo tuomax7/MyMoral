@@ -12,6 +12,10 @@ ul {
 	padding: 0;
 }
 
+li{
+	margin-bottom: 10px;
+}
+
 #progressBarDiv{
 	width: 100%;
 	background-color: #e0d7de;
