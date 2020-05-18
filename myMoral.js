@@ -109,15 +109,15 @@ function newQuestion(){
 	//Clears the timer of the previous question
 	clearInterval(timer1);
 
-	//progressPercent is handled questions / all questions
-	var progressPercent = Math.round(100*((qIndex+1)/questionsArr.length)) + "%";
+	//progressPercent is handled questions / all questions (- possbile tiebreaker)
+	var progressPercent = Math.round(100*((qIndex+1)/(questionsArr.length-1))) + "%";
 
 	document.getElementById("progressBar").innerText = progressPercent;
 	document.getElementById("progressBar").style.width = progressPercent;
 
 
 
-	if(qIndex > questionsArr.length-2){
+	if(qIndex > questionsArr.length-3){
 		checkScore();
 		return;
 	}
