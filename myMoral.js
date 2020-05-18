@@ -31,7 +31,7 @@ function optionPressed(btnId){
 	ethicScores[chosenEthicName]++;
 
 	clearInterval(timer1);
-	newQuestion(false);
+	newQuestion([]);
 }
 
 
@@ -81,14 +81,14 @@ function checkScore(){
 
 	if(tiedEthics.length > 1){
 		window.alert("Useammalla suuntauksella on samat pisteet, seuraa bonuskysymys.")
-		newQuestion(true);
+		newQuestion(tiedEthics);
 		return;
 	}
 
 
 	updateResults(strongestEthicName);
 
-
+	progress.style.display = "block";
 	settings.style.display = "none";
 	game.style.display = "none";
 	results.style.display = "block";
@@ -124,26 +124,38 @@ var time;
 
 //HANDLES GENERATING NEW QUESTIONS AS WELL AS RESETTING TIMER
 
-function newQuestion(tieBreaker){
+function newQuestion(tiedEthics){
 
 	//Clears the timer of the previous question
 	clearInterval(timer1);
 
 
-	if(!tieBreaker){
+	if(tiedEthics.length == 0){
+
 		//progressPercent is handled questions / all questions (- possbile tiebreaker)
-		var progressPercent = Math.round(100*((qIndex+1)/(questionsArr.length-1))) + "%";
+		var progressPercent = Math.min(100, Math.round(100*((qIndex+1)/(questionsArr.length-1)))) + "%";
 
 		document.getElementById("progressBar").innerText = progressPercent;
 		document.getElementById("progressBar").style.width = progressPercent;
 
 	}else{
+		document.getElementById("progress").style.display = "none";
 		document.getElementById("checkScoreBtn").style.display = "none";
+
+		hyveBtn.style.display = "none";
+		seurausBtn.style.display = "none";
+		velvollisuusBtn.style.display = "none";
+		oikeusBtn.style.display = "none";
+		sopimusBtn.style.display = "none";
+
+		for(var i = 0; i < tiedEthics.length; i++){
+			document.getElementById(tiedEthics[i] + 'Btn').style.display = "block";
+		}
 	}
 
 
 
-	if((qIndex > questionsArr.length-3) && !tieBreaker){
+	if((qIndex > questionsArr.length-3) && tiedEthics == 0){
 		checkScore();
 		return;
 	}
@@ -168,7 +180,7 @@ function newQuestion(tieBreaker){
 	}
 
 	//Hides next question button when arriving at the last question
-	if(qIndex >= questionsArr.length-2){
+	if(qIndex >= questionsArr.length-2 || tiedEthics.length > 0){
 		document.getElementById("nextQuestionBtn").style.display = "none";
 	}
 
@@ -176,7 +188,7 @@ function newQuestion(tieBreaker){
 	//Sets timer if not a tiebreaking situation
 
 
-	if(tieBreaker) timeSet = "noTime";
+	if(tiedEthics.length > 0) timeSet = "noTime";
 
 
 	if(timeSet == "noTime"){
@@ -205,7 +217,7 @@ function startGame(){
 function generateGame(){
 	qIndex = -1;
 	shuffleQuestions();
-	newQuestion(false);
+	newQuestion([]);
 
 }
 
@@ -216,7 +228,7 @@ function generateGame(){
 function timer(){
 	time--;
 	timeIndicator.innerText = time;
-	if(time <= 0) newQuestion(false);
+	if(time <= 0) newQuestion([]);
 }
 
 
@@ -312,6 +324,11 @@ function updateResults(strongestEthicName) {
 	});
 
 
+}
+
+function checkScorePressed(){
+	qIndex = questionsArr.length-2;
+	checkScore();
 }
 
 
