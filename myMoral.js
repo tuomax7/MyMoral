@@ -31,7 +31,7 @@ function optionPressed(btnId){
 	ethicScores[chosenEthicName]++;
 
 	clearInterval(timer1);
-	newQuestion();
+	newQuestion(false);
 }
 
 
@@ -65,6 +65,26 @@ function checkScore(){
 
 		return;
 	}
+
+
+	//Forming an array of tied ethic scores
+
+	var tiedEthics = [];
+
+	for(var ethicName in ethicScores){
+
+		if(ethicScores[ethicName] == strongestEthic) tiedEthics.push(ethicName);
+
+	}
+
+	//If there is a tie, a tiebreaker question is introduced
+
+	if(tiedEthics.length > 1){
+		window.alert("Useammalla suuntauksella on samat pisteet, seuraa bonuskysymys.")
+		newQuestion(true);
+		return;
+	}
+
 
 	updateResults(strongestEthicName);
 
@@ -104,23 +124,30 @@ var time;
 
 //HANDLES GENERATING NEW QUESTIONS AS WELL AS RESETTING TIMER
 
-function newQuestion(){
+function newQuestion(tieBreaker){
 
 	//Clears the timer of the previous question
 	clearInterval(timer1);
 
-	//progressPercent is handled questions / all questions (- possbile tiebreaker)
-	var progressPercent = Math.round(100*((qIndex+1)/(questionsArr.length-1))) + "%";
 
-	document.getElementById("progressBar").innerText = progressPercent;
-	document.getElementById("progressBar").style.width = progressPercent;
+	if(!tieBreaker){
+		//progressPercent is handled questions / all questions (- possbile tiebreaker)
+		var progressPercent = Math.round(100*((qIndex+1)/(questionsArr.length-1))) + "%";
+
+		document.getElementById("progressBar").innerText = progressPercent;
+		document.getElementById("progressBar").style.width = progressPercent;
+
+	}else{
+		document.getElementById("checkScoreBtn").style.display = "none";
+	}
 
 
 
-	if(qIndex > questionsArr.length-3){
+	if((qIndex > questionsArr.length-3) && !tieBreaker){
 		checkScore();
 		return;
 	}
+
 
 	qIndex++;
 	questionBox.innerText = questionsArr[qIndex][0];
@@ -141,12 +168,15 @@ function newQuestion(){
 	}
 
 	//Hides next question button when arriving at the last question
-	if(qIndex >= questionsArr.length-1){
+	if(qIndex >= questionsArr.length-2){
 		document.getElementById("nextQuestionBtn").style.display = "none";
 	}
 
 
-	//Sets timer
+	//Sets timer if not a tiebreaking situation
+
+
+	if(tieBreaker) timeSet = "noTime";
 
 
 	if(timeSet == "noTime"){
@@ -175,7 +205,7 @@ function startGame(){
 function generateGame(){
 	qIndex = -1;
 	shuffleQuestions();
-	newQuestion();
+	newQuestion(false);
 
 }
 
@@ -186,7 +216,7 @@ function generateGame(){
 function timer(){
 	time--;
 	timeIndicator.innerText = time;
-	if(time <= 0) newQuestion();
+	if(time <= 0) newQuestion(false);
 }
 
 
