@@ -15,7 +15,7 @@ var questionsArr = [
 	"hyve5", "seuraus5", "velvollisuus5", "oikeus5", "sopimus5"]
 ];
 
-var ethicSummaries = {"hyve" : "Hyvetiivistelmä", "seuraus" : "Seuraustiivistelmä", "velvollisuus" : "Velvollisuustiivistelmä", "oikeus" : "Oikeustiivistelmä", "sopimus" : "Sopimustiivistelmä"};
+var ethicLinks = {"hyve" : "https://fi.wikipedia.org/wiki/Hyve-etiikka", "seuraus" : "https://fi.wikipedia.org/wiki/Seurausetiikka", "velvollisuus" : "https://fi.wikipedia.org/wiki/Velvollisuusetiikka", "oikeus" : "https://fi.wikipedia.org/wiki/Luonnonoikeus", "sopimus" : "https://fi.wikipedia.org/wiki/Sopimusetiikka"};
 
 var qIndex;
 
@@ -98,7 +98,7 @@ function checkScore(){
 	seurausResult.innerText = "Seurausetiikka: " + ethicScores["seuraus"];
 	velvollisuusResult.innerText = "Velvollisuusetiikka: " + ethicScores["velvollisuus"];
 	oikeusResult.innerText = "Oikeusetiikka: " + ethicScores["oikeus"];
-	sopimusResult.innerText = "Sopimus-etiikka: " + ethicScores["sopimus"];
+	sopimusResult.innerText = "Sopimusetiikka: " + ethicScores["sopimus"];
 
 
 	//When multiple ethics share a score, chooses one of them without further explanations, should be noted
@@ -111,9 +111,12 @@ function checkScore(){
 
 	strongestEthicH2.innerText = strongestEthicLabel;
 
-	var ethicSummary = document.createElement('p');
-	ethicSummary.innerText = ethicSummaries[strongestEthicName];
-	document.getElementById('ethicSummary').appendChild(ethicSummary);
+	var ethicLink = document.createElement('a');
+	ethicLink.href = ethicLinks[strongestEthicName];
+	ethicLink.innerText = "Lue lisää tästä normatiivisen etiikan suuntauksesta.";
+	ethicLink.target = "_blank";
+	ethicLink.rel = "noopener noreferrer";
+	document.getElementById('ethicLink').appendChild(ethicLink);
 
 }
 
