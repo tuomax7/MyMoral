@@ -1,12 +1,13 @@
 body{
 	background-color: #F3DBD9;
-	font-family: serif;
+	font-family: Quicksand, open-sans, sans-serif;
 	text-align: center;
 	font-size: 20px;
 	line-height: 1.4;
 }
 
 button{
+	font-family: Quicksand, open-sans, sans-serif;
 	cursor: pointer;
 	background-color: white;
   	border: none;
@@ -17,7 +18,7 @@ button{
   	display: inline-block;
   	border-radius: 10px;
   	border: solid 2px black;
-  	font-size: 15px;
+  	font-size: 20px;
 }
 
 ul {
