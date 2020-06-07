@@ -63,7 +63,7 @@
 
   			<p>(Mikäli aikaraja ylittyy ja kysymys jää vastaamatta, jää kysymyksen vastaus tyhjäksi eikä sitä oteta huomioon lopputuloksessa)</p>
 
-  			<button onClick="startGame()">Aloita peli!</button>
+  			<button id="gameStartBtn" onClick="startGame()">Aloita peli!</button>
 		</div>
 	</div>
 
@@ -72,8 +72,6 @@
 	<!-- Progressview, shows player progression of quiz -->
 
 	<div id="progress" style="display: none">
-
-		<h3>Eteneminen</h3>
 
 		<div id="progressBarDiv">
 			<div id="progressBar">0%</div>
@@ -101,11 +99,11 @@
 
 		</br></br>
 
-		<button id="checkScoreBtn" onClick="checkScorePressed()">Katso tulos</button>
+		<ul id="functionalBtns">
+			<li><button id="checkScoreBtn" onClick="checkScorePressed()">Katso tulos</button></li>
+			<li><button id="nextQuestionBtn" onClick="newQuestion([])">Seuraava kysymys!</button></li>
+		</ul>
 
-		</br>
-
-		<button id="nextQuestionBtn" onClick="newQuestion([])">Seuraava kysymys!</button>
 	</div>
 
 

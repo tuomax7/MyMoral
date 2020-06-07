@@ -5,8 +5,17 @@ body{
 }
 
 button{
-	font-size: 20px;
 	cursor: pointer;
+	background-color: white;
+  	border: none;
+  	color: black;
+  	padding: 15px 32px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 16px;
+  	border-radius: 10px;
+  	border: solid 2px black;
 }
 
 ul {
@@ -18,9 +27,17 @@ li{
 	margin-bottom: 10px;
 }
 
+#timeSelect{
+	width: 20%;
+	height: 30px;
+	border-radius: 3px;
+}
+
 #progressBarDiv{
 	width: 100%;
 	background-color: #e0d7de;
+	border: solid 2px  black;
+	border-radius: 5px;
 }
 
 #progressBar{
@@ -32,18 +49,22 @@ li{
   	color: white; 
 }
 
-#questionBtns button {
-	background-color: white;
-  	border: none;
-  	color: black;
-  	padding: 15px 32px;
-  	text-align: center;
-  	text-decoration: none;
-  	display: inline-block;
-  	font-size: 16px;
-  	border-radius: 10px;
+#functionalBtns button{
+	background-color: #fc9488;
 }
 
 #questionBtns button:hover {
 	background-color: #d1c8c7;
 }
+
+#functionalBtns button:hover {
+	background-color: #c97369;
+}
+
+#gameStartBtn:hover {
+	background-color: #d1c8c7;
+}
+
+
+
+
