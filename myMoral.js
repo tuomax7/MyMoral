@@ -23,7 +23,7 @@ var questionsArr = [
 	"Mielestäsi ei ole reilua antaa tähtipelaajan pelata finaalissa, sillä yhteisten sääntöjen rikkominen on ehdottoman väärin.", "Annat tähtipelaajaan pelata finaalissa, jotta ahkerasti harjoitellut joukkueesi saisi todennäköisemmin ansaitsemansa voiton.", "Valmentajana sinun tulee varmistaa, että kaikki joukkueen jäsenet noudattavat yhteisiä sääntöjä, joten et anna tähtipelaajan pelata finaalissa.", "Vaikka tähtipelaajalla ei ollut oikeutta rikkoa sääntöjä, koet että sinulla on myös oikeus päättää ketkä finaalissa pelaavat, joten annat tähtipelaajan pelata.", "Joukkueen jäsenet ovat sopineet noudattavansa sääntöjä, joten olisi väärin antaa sääntöjä rikkoneen pelaajan pelata finaalissa."],
 
 	["Oikeuden tuomarina sinun tulee päättää kumman vanhemman luona eronneen avioparin lapsi asuu. Lapsi on epävirallisesti ilmoittanut asuvansa mieluummin isän luona, mutta isän elämäntilanne on merkittävästi epävakaampi ja lapsiystävättömämpi kuin äidin. Lapsi on alle 12 vuotta vanha, joten lopullinen päätös on sinun. Mitä teet?", 
-	"Tunnustat lapsen vahvemman rakkauden isäänsä kohtaan ja annat lapsen asua isällään.", "Annat lapsen asua isällään, sillä tällöin lapsi saa tällöin asua mieleisemmän vanhemman kanssa.", "Ammattisi velvoittaa sinut tekemään päätöksiä ensisijaisesti lain puitteissa, jolloin äidin vakaampi elämäntilanne ansaitsee lapsen ensisijaisen huoltajuuden.", "Lapsella ei ole laillista päätäntävaltaa asumisjärjestelyissä, mutta sinulla on, joten koet ettei sinun tarvitse kuunnella lasta vaan päätät asumisolosuhteiden valossa lapsen asuvan äidillään.", "Vaikka laki ei velvoita sinua kuulemaan lapsen toiveita, koet sen järkevän tuomarin toimintana ja annat lapsen asua isällään."],
+	"Tunnustat lapsen vahvemman rakkauden isäänsä kohtaan ja annat lapsen asua isällään.", "Annat lapsen asua isällään, sillä tällöin lapsi saa asua mieleisemmän vanhemman kanssa.", "Ammattisi velvoittaa sinut tekemään päätöksiä ensisijaisesti lain puitteissa, jolloin äidin vakaampi elämäntilanne ansaitsee lapsen ensisijaisen huoltajuuden.", "Lapsella ei ole laillista päätäntävaltaa asumisjärjestelyissä, mutta sinulla on, joten koet ettei sinun tarvitse kuunnella lasta vaan päätät asumisolosuhteiden valossa lapsen asuvan äidillään.", "Vaikka laki ei velvoita sinua kuulemaan lapsen toiveita, koet sen järkevän tuomarin toimintana ja annat lapsen asua isällään."],
 
 	["Lapsellasi on hyvin nuorena todettu sairaus, jonka ennustetaan lyhentävän hänen elinikäänsä useammalla kymmenellä vuodella. Lapsi ei diagnoosin aikaan ymmärtänyt sairauttaan, mutta hänen kasvettuaan voisit nyt kertoa hänelle hänen sairaudestaan ymmärrettävästi, tai vaihtoehtoisesti varmistaa, ettei lapsi saa koskaan kuulla sairaudestaan. Kerrotko lapsellesi sairaudesta?", 
 	"Sairaudesta kertomatta jättäminen on rinnastettavissa valehtelemiseen, jonka koet vääräksi, joten kerrot lapselle sairaudesta.", "Lapsi saattaisi hyvinkin mahdollisesti elää loppuelämänsä onnettomana, jos hän saisi tietää sairaudesta, joten varmistat ettei lapsi saa tietää sairaudesta.", "Vanhempana sinulla on velvollisuus huolehtia lapsesi terveydestä, mihin kuuluu myös sairauden hyväksyminen ja siitä lapselle kertominen.", "Lapsella on oikeus saada tietää hänen sairaudestaan, joten kerrot lapselle sairaudesta.", "Järkeilet, että lapsi elää onnellisemman elämän sairaudesta tietämättömänä, vaikka lapsella saattaisikin olla oikeus kuulla sairaudestaan. Et siis kerro lapselle sairaudesta."],
@@ -118,8 +118,6 @@ function checkScore(){
 	sopimusResult.innerText = "Sopimusetiikka: " + ethicScores["sopimus"];
 
 
-	//When multiple ethics share a score, chooses one of them without further explanations, should be noted
-
 	var strongestEthicLabel = "Vastasit " + Math.round(100*(strongestEthic / totalAnswered)) + "% " + strongestEthicName;
 
 	if(strongestEthicName == "hyve") strongestEthicLabel += "-";
@@ -169,7 +167,7 @@ function newQuestion(tiedEthics){
 		sopimusBtn.style.display = "none";
 
 		for(var i = 0; i < tiedEthics.length; i++){
-			document.getElementById(tiedEthics[i] + 'Btn').style.display = "block";
+			document.getElementById(tiedEthics[i] + 'Btn').style.display = "inline-block";
 		}
 	}
 
