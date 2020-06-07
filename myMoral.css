@@ -6,6 +6,7 @@ body{
 
 button{
 	font-size: 20px;
+	cursor: pointer;
 }
 
 ul {
@@ -29,4 +30,20 @@ li{
 	text-align: center;
   	line-height: 30px;
   	color: white; 
+}
+
+#questionBtns button {
+	background-color: white;
+  	border: none;
+  	color: black;
+  	padding: 15px 32px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 16px;
+  	border-radius: 10px;
+}
+
+#questionBtns button:hover {
+	background-color: #d1c8c7;
 }
