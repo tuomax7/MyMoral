@@ -1,0 +1,20 @@
+{
+  "name": "mymoral",
+  "version": "1.0.0",
+  "description": "Monivalintapeli, joka muodostaa käsityksen vastaajan suosimasta normatiivisen etiikan suuntauksesta.",
+  "main": "myMoral.js",
+  "scripts": {
+    "start": "myMoral.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tuomax7/MyMoral.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tuomax7/MyMoral/issues"
+  },
+  "homepage": "https://github.com/tuomax7/MyMoral#readme"
+}
